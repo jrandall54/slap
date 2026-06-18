@@ -19,10 +19,11 @@ SLAP is environment-agnostic. It works with any AI coding assistant, IDE, or age
 
 ## Repository Contents
 
-```
+```text
 slap/
   README.md              This file
   SLAP_protocol.md       Full protocol specification (RFC 2119 compliant)
+  LICENSE                MIT License
   workflows/
     slap.md              Fast Recovery workflow file
     slap-full.md         Deep Recovery workflow file
@@ -88,4 +89,4 @@ For the complete specification, including compliance terminology, classification
 
 ## License
 
-This work is provided as-is for public use. No warranty is expressed or implied.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

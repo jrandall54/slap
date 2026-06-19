@@ -8,7 +8,7 @@
 
 ---
 
-## 1.0 Overview
+## 1. Overview
 
 SLAP is a structured recovery protocol for intelligent agents and reasoning systems. It provides a repeatable process for detecting behavioral drift, identifying its cause, restoring alignment with governing instructions, and resuming execution safely.
 
@@ -23,13 +23,7 @@ SLAP is environment-agnostic. It is not tied to any specific tool, IDE, model pr
 
 ---
 
-## 1.1 Compliance Terminology
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
-
----
-
-## 1.2 Governing Principles
+## 2. Governing Principles
 
 SLAP is a corrective reasoning framework. It is not punitive and not cosmetic. Its sole purpose is structural correction.
 
@@ -39,11 +33,11 @@ SLAP is a corrective reasoning framework. It is not punitive and not cosmetic. I
 
 ---
 
-## 2.0 Operating Modes
+## 3. Operating Modes
 
 SLAP defines two operational modes. The appropriate mode is determined by the severity of the observed drift.
 
-### 2.1 Fast Recovery Mode
+### 3.1 Fast Recovery Mode
 
 Fast Recovery is invoked for minor, low-risk drift. It executes a rapid correction loop without requiring a deep system audit.
 
@@ -55,7 +49,7 @@ Typical triggers:
 - Output structure issues
 - Low-risk misunderstandings
 
-### 2.2 Deep Recovery Mode
+### 3.2 Deep Recovery Mode
 
 Deep Recovery is a full incident-response protocol for severe or recurring violations. It requires comprehensive diagnostic analysis and formal verification before execution MAY resume.
 
@@ -69,11 +63,11 @@ Typical triggers:
 
 ---
 
-## 3.0 Protocol Stages
+## 4. Protocol Stages
 
 Both operating modes execute the same four stages in sequence. The depth of analysis within each stage varies by mode.
 
-### 3.1 Stage 1: Stop
+### 4.1 Stage 1: Stop
 
 The system MUST immediately halt execution.
 
@@ -81,7 +75,7 @@ The system MUST immediately halt execution.
 - The system MUST freeze current assumptions and plans.
 - The system MUST NOT extend the current approach.
 
-### 3.2 Stage 2: Learn
+### 4.2 Stage 2: Learn
 
 The system MUST analyze the failure to determine the root cause. No corrections are applied during this stage.
 
@@ -94,12 +88,12 @@ In Fast Recovery Mode, the system MUST:
 In Deep Recovery Mode, the system MUST additionally:
 
 - Review all governing instructions, including user, project, and workflow instructions.
-- Determine the Severity Classification (see Section 5.1).
-- Determine the Failure Type (see Section 5.2).
+- Determine the Severity Classification (see Section 6.1).
+- Determine the Failure Type (see Section 6.2).
 - Conduct an Assumption Audit, listing all relevant assumptions and marking each as Supported, Unsupported, or Contradicted.
 - Identify the Drift Pattern (first occurrence, repeat occurrence, or recurring failure pattern). If recurring, the system MUST explain why the previous correction failed.
 
-### 3.3 Stage 3: Align
+### 4.3 Stage 3: Align
 
 The system MUST restore consistency between intent, instructions, and behavior. The goal of this stage is system consistency, not output generation.
 
@@ -115,7 +109,7 @@ In Deep Recovery Mode:
 - Prevention Plan: The system MUST define safeguards to prevent recurrence, such as additional validation steps, stricter instruction checks, or improved assumption handling.
 - Verification: The system MUST confirm that instructions are internally consistent, plans match instructions, and intended behavior is clearly understood.
 
-### 3.4 Stage 4: Proceed
+### 4.4 Stage 4: Proceed
 
 The system MAY resume execution only after alignment is achieved and a formal report is produced.
 
@@ -133,15 +127,15 @@ In Deep Recovery Mode:
 - If confidence is LOW, the system MUST ask for clarification.
 - If escalation is required, the system MUST pause and request user input.
 - If major scope or architecture changes are required, the system MUST request explicit approval.
-- The Proceed Criteria Checklist (see Section 4.2) MUST be satisfied before resuming.
+- The Proceed Criteria Checklist (see Section 5.2) MUST be satisfied before resuming.
 
 ---
 
-## 4.0 Reporting Requirements
+## 5. Reporting Requirements
 
 When SLAP is executed, the system MUST produce a structured report before proceeding. The report format varies by operating mode.
 
-### 4.1 Minimal Report (Fast Recovery)
+### 5.1 Minimal Report (Fast Recovery)
 
 The system MUST output a correction summary in the following structure:
 
@@ -154,7 +148,7 @@ The system MUST output a correction summary in the following structure:
 
 If confidence is LOW, the system MUST ask a clarification question before proceeding.
 
-### 4.2 Full Incident Log (Deep Recovery)
+### 5.2 Full Incident Log (Deep Recovery)
 
 The system MUST output a comprehensive incident log in the following structure:
 
@@ -204,9 +198,9 @@ If ANY checklist item is false, the system MUST NOT proceed.
 
 ---
 
-## 5.0 Classifications
+## 6. Classifications
 
-### 5.1 Severity Classification
+### 6.1 Severity Classification
 
 Severity classification is REQUIRED in Deep Recovery Mode and OPTIONAL in Fast Recovery Mode.
 
@@ -216,7 +210,7 @@ Severity classification is REQUIRED in Deep Recovery Mode and OPTIONAL in Fast R
 | S2 (Major) | Deep systemic or architectural deviations. | Architectural divergence, sustained behavioral deviation. |
 | S3 (Minor) | Localized, low-risk errors. | Formatting mistakes, small instruction misses. |
 
-### 5.2 Failure Type
+### 6.2 Failure Type
 
 | Type | Description |
 | :--- | :--- |
@@ -226,7 +220,7 @@ Severity classification is REQUIRED in Deep Recovery Mode and OPTIONAL in Fast R
 
 ---
 
-## 6.0 Implementation
+## 7. Implementation
 
 SLAP is implemented as workflow files within the agent environment. Refer to the companion workflow files for ready-to-use implementations:
 
